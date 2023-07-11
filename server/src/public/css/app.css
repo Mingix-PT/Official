@@ -1,13 +1,13 @@
 html,
 body {
-  margin: 0;
+  margin: 0 auto;
   font-family: 'Times New Roman', Times, sans-serif;
   font-size: 18px; }
 
 .backgr {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to left, #11998e, #38ef7d); }
+  background-image: linear-gradient(to left, #1f58a7, #38daef); }
 
 .logo1 {
   width: 700px;
@@ -17,6 +17,7 @@ body {
   font-weight: bold;
   text-align: center;
   position: absolute;
+  color: #000;
   bottom: 40%;
   left: 50%;
   transform: translate(-50%, -50%); }
@@ -32,7 +33,7 @@ body {
   bottom: 34%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #c75808; }
+  color: #ff6a00; }
 
 .logo3 {
   width: 400px;
@@ -76,7 +77,7 @@ body {
 .forgot-password {
   margin-top: 10px;
   text-align: center !important;
-  color: #063718;
+  color: #226592;
   font-size: 16px;
   text-decoration: none; }
 
@@ -100,7 +101,7 @@ body {
   font-size: 16px;
   border-radius: 25px;
   color: #ffffff;
-  background-color: #008667;
+  background-color: #0544a3;
   border-color: #BBB; }
 
 .login:hover {
@@ -110,32 +111,3 @@ body {
 
 .log_input::placeholder {
   color: #b2b2b2; }
-
-/* .fpbox{
-    width: 500px;
-    height: 600px ;
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.fg_row{
-    margin-top: 10px;
-    display: flex;
-}
-.fg_infor{
-    margin-top: 20px;
-    margin-left: 10px;
-    min-width: 100px;
-}
-.fg_input{
-    flex: 1;
-    padding: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-} */

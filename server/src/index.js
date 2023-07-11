@@ -3,15 +3,15 @@ const morgan = require('morgan')
 const { engine } = require('express-handlebars')
 const path = require('path')
 const app = express()
-const sql = require('mssql/msnodesqlv8')
+const sql = require('mssql')
 const port = 3000
 
-const config = {
-    server: "localhost",
+const sqlConfig = {
+    server: "DESKTOP-D1SFR6N",
     database: "Project_TKB",
     user: "sa",
     password: "leminh164",
-    driver: "msnodesqlv8",
+    driver: "ODBC Driver 17 for SQL Server",
     options: {
         trustedConnection: true,
         encrypt: true,
@@ -38,45 +38,21 @@ app.set('views', path.join(__dirname, 'resources/views'))
 // Route init
 route(app)
 
-app.get('/', (req, res) => {
-    res.render('home')
-})
-
-// app.get('/dang_nhap', (req, res) => {
-//     res.render('dang_nhap')
+// app.get('/', (req, res) => {
+//     res.render('home')
 // })
 
-// async () => {
-//     try {
-//         // make sure that any items are correctly URL encoded in the connection string
-//         await sql.connect(config)
-//         const result = await sql.query`select * from HocSinh`
-//         console.log(result)
-//     } catch (err) {
-//         // ... error checks
+
+// sql.connect(sqlConfig, (err) => {
+//     if (err) console.log(err)
+//     else {
+//         const request = new sql.Request()
+//         request.query('SELECT * FROM HocSinh', (err, recordset) => {
+//             if (err) console.log(err)
+//             else console.log(recordset)
+//         })
 //     }
-// }
-
-sql.connect(config, function (err) {
-    if (err) conole.log(err)
-
-    // make a request as
-
-    let request = new sql.Request();
-
-    //make the query
-
-    let query = "your query goes here";  // eg : "select * from tbl_name"
-
-    request.query(query, funnction(err, records){
-        if(err) console.log(err)
-        else{
-            console.log(records)
-            //  your out put as records  
-        }
-    })
-
-})
+// })
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
