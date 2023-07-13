@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <form></form>
     <div class="app">
         <header class="header">
             <nav class="header__navbar">
@@ -30,12 +31,14 @@
                         </a>
                     </li>
                     <li class="header__navbar-item separate">
-                        <a href="/Trang cá nhân/index.html" class="header__navbar-name" style="margin: 0;">
+                        <a href="http://localhost:3000/trang-ca-nhan" class="header__navbar-name" style="margin: 0;">
                             Thông tin tài khoản
                         </a>
                     </li>
                     <li class="header__navbar-item" style="margin: 0">
-                        <a href="/Đăng nhập/index.html" class="header__navbar-logout">Đăng xuất</a>
+                        <form action="/dang-xuat?_method=DELETE" method="POST" class="header__navbar-logout">
+                            <button type="submit">Dang xuat</button>
+                        </form>
                     </li>
                 </ul>
             </nav>
