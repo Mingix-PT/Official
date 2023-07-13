@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gakusei</title>
+    <link rel="stylesheet" href="script.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/trang-ca-nhan.css">
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <nav class="header__navbar">
+                <div class="header__navbar-search">
+                    <input type="text" class="header__navbar-input" placeholder="Tìm kiếm thông tin môn học">
+                    <button type="submit" class="button">
+                        <i class="fa-solid fa-magnifying-glass icon"></i>
+                    </button>
+                </div>
+                <ul class="header__navbar-list">
+                    <li class="header__navbar-item">
+                        <a href="/Đăng nhập/Developing.html" class="header__navbar-help separate">
+                            <i class="fa-regular fa-circle-question"></i> Trợ giúp
+                        </a>
+                    </li>
+                    <li class="header__navbar-item separate">
+                        <a href="http://localhost:3000/" class="header__navbar-name" style="margin: 0;">
+                            Trang chủ
+                        </a>
+                    </li>
+                    <li class="header__navbar-item" style="margin: 0">
+                        <a href="http://localhost:3000/dang-nhap" class="header__navbar-logout">Đăng xuất</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <h1 class="container__title">Trang thông tin cá nhân</h1>
+
+            <div class="container__user-infor">
+                <div class="container__user-infor-field">
+                    <!-- <label for="avatar" class="container__user-infor-field-name"></label> -->
+                    <img id="avatar" src="unknow.png" alt="Ảnh đại diện"
+                        class="container__user-infor-field-input avatar">
+                </div>
+                <div class="container__user-infor-field">
+                    <label for="name" class="container__user-infor-field-name">Họ và tên:</label>
+                    <input type="text" class="container__user-infor-field-input" id="name" readonly>
+                </div>
+                <div class="container__user-infor-field">
+                    <label for="place" class="container__user-infor-field-name">Lớp:</label>
+                    <input type="text" class="container__user-infor-field-input" id="place" readonly>
+                </div>
+                <div class="container__user-infor-field">
+                    <label for="dob" class="container__user-infor-field-name">Ngày sinh:</label>
+                    <input type="date" class="container__user-infor-field-input" id="dob" readonly>
+                </div>
+                <div class="container__user-infor-field">
+                    <label for="email" class="container__user-infor-field-name">Email:</label>
+                    <input type="email" class="container__user-infor-field-input" id="email" readonly>
+                </div>
+                <div class="container__user-infor-field">
+                    <label for="id" class="container__user-infor-field-name">MSSV:</label>
+                    <input type="id" class="container__user-infor-field-input" id="id" readonly>
+                </div>
+                <div class="container__user-infor-field">
+                    <label for="PhoneNumber" class="container__user-infor-field-name">Số điện thoại:</label>
+                    <input type="number" class="container__user-infor-field-input" id="PhoneNumber" readonly>
+                </div>
+
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>

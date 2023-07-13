@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gakusei</title>
+    <title>Đăng nhập</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../../public/css/app.css">
+    <link rel="stylesheet" href="/css/dang-nhap.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <div class="logo2">Gakusei</div>
         <h2 class="logo3">Đăng nhập để xem thời khóa biểu của bạn</h2>
         <div class="loginbox">
-            <form>
+            <form action="/dang-nhap" method="post">
                 <div class="log_row">
                     <label for="account" class="log_infor" title="Tên tài khoản" style="font-size: 18px;">
                         Tên đăng nhập:
@@ -32,15 +32,14 @@
                     </label>
                     <input type="password" class="log_input" name="password" required placeholder="Mật khẩu">
                 </div>
-
-                <a href="Developing.html" class="forgot-password"> Quên mật khẩu?</a>
+                <a href="Developing.html" class="forgot-password">Quên mật khẩu?</a>
                 <input type="submit" class="login" value="Đăng nhập">
-
             </form>
 
         </div>
     </div>
-    <script src="script.js">  </script>
+    {{!--
+    <script src="script.js">  </script> --}}
 </body>
 
 </html>
