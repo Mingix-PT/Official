@@ -82,7 +82,7 @@ app.engine('hbs', engine({
     extname: '.hbs',
 }))
 app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'resources/views'))
+app.set('views', path.join(__dirname, 'resources', 'views'))
 app.use(session({
     secret: 'secret',
     resave: false,
@@ -178,4 +178,4 @@ function checkNotAuthenticated(req, res, next) {
     next()
 }
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`App listening on port ${port}!`))
