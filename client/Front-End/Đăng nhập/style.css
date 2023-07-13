@@ -6,7 +6,7 @@ html,body{
 .backgr{
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to left, #1f58a7, #38daef);
+    background-image: linear-gradient(to top, #1f58a7, #38daef);
 }
 .logo1{
     width: 700px;

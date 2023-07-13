@@ -5,150 +5,117 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gakusei</title>
+  <link rel="stylesheet" href="script.js">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
   <link rel="icon" href="/Đăng nhập/favicon.ico">
+  
 </head>
 <body>
     <div class="app">
         <header class="header">
             <nav class="header__navbar">
+              <div class="header__navbar-left">
+                <img src="/Logo.png" alt="" class="header__navbar-logo">
                 <div class="header__navbar-search">
-                    
                     <input type="text" class="header__navbar-input" placeholder="Tìm kiếm thông tin môn học">
                     <button type="submit" class="button">
                       <i class="fa-solid fa-magnifying-glass icon"></i>
                     </button>
                 </div>
-                <ul class="header__navbar-list">
-                    <li class="header__navbar-item"> 
-                        <a href="/Đăng nhập/Developing.html" class="header__navbar-help separate"> 
-                            <i class="fa-regular fa-circle-question"></i> Trợ giúp
-                        </a>
+              </div>
+              <ul class="header__navbar-list">
+                  <li class="header__navbar-item"> 
+                    <a href="/Đăng nhập/Developing.html" class="header__navbar-help separate"> 
+                      <i class="fa-regular fa-circle-question"></i> Trợ giúp
+                    </a>
+                  </li>
+                  <li class="header__navbar-item separate">
+                    <a href="/Trang cá nhân/index.html" class="header__navbar-name" style="margin: 0;">
+                      <i class="fa-solid fa-user"></i> Thông tin tài khoản
+                    </a>
                     </li>
-                    <li class="header__navbar-item separate">
-                        <a href="/Trang cá nhân/index.html" class="header__navbar-name" style="margin: 0;">
-                            Thông tin tài khoản
-                        </a>
-                    </li>
-                    <li class="header__navbar-item" style="margin: 0">
-                        <a href="/Đăng nhập/index.html" class="header__navbar-logout">Đăng xuất</a>  
-                    </li>   
-                </ul>      
+                  <li class="header__navbar-item" style="margin: 0">
+                    <a href="/Đăng nhập/index.html" class="header__navbar-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>  
+                  </li>   
+              </ul>      
             </nav>
         </header>
-        <div class="container">
-    
-            <div class="schedule">
-                <table>
-                  <tr>
-                    <th>Thời gian</th>
-                    <th>Thứ 2</th>
-                    <th>Thứ 3</th>
-                    <th>Thứ 4</th>
-                    <th>Thứ 5</th>
-                    <th>Thứ 6</th>
-                    <th>Thứ 7</th>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  
-                  
-                
-                </table>
+        <div class="container">   
+            <div class="container__schedule">
+              <div class="schedule__row">
+                <div class="schedule__header">Tiết</div>
+                <div class="schedule__header">Thứ 2</div>
+                <div class="schedule__header">Thứ 3</div>
+                <div class="schedule__header">Thứ 4</div>
+                <div class="schedule__header">Thứ 5</div>
+                <div class="schedule__header">Thứ 6</div>
+              </div>
+              <div class="schedule__row">
+                <div class="shedule__row-element shift">
+                  1
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+              </div>
+              <div class="schedule__row">
+                <div class="shedule__row-element shift">
+                  2
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+              </div>
+              <div class="schedule__row">
+                <div class="shedule__row-element shift">
+                  3
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled> 
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+                <div class="shedule__row-element">
+                  <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                </div>
+              </div>
               </div>
               
-        </div>
+        </div><script src="script.js"></script>
         <footer class="footer">
 
         </footer>
