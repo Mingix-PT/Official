@@ -1,4 +1,4 @@
-app{
+.app{
     position: relative;
 }
 .header{
@@ -20,6 +20,8 @@ app{
 
 .header__navbar-left{
     display: flex;
+    position: relative;
+    flex-wrap: nowrap;
     flex: 0.7;
 }
 
@@ -38,7 +40,7 @@ app{
 .header__navbar-name:hover,
 .header__navbar-logout:hover{
     color: #706b6b;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .header__navbar-item,
@@ -71,8 +73,15 @@ app{
 }
 
 .header__navbar-logo{
-    transform: scale(0.8);
-    margin-left: 5px;
+    transform: scale(0.9);
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 80%;
+    height: 100%;
+    
+    
+    
 }
 
 .header__navbar-search{
@@ -101,9 +110,13 @@ app{
     margin-top: 8px;
 }
 .button{
+
+    position: relative;
+    display: inline-block;
     border: none;
-    background-color: #fff;
+    background-color: transparent !important;
     cursor: pointer;
+    padding: 0;
 }
 .icon:hover{
     color: #706b6b;
