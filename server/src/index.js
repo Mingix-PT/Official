@@ -191,8 +191,41 @@ app.get('/dang-nhap', checkNotAuthenticated, (req, res) => {
 })
 
 app.get('/trang-ca-nhan', checkAuthenticated, (req, res) => {
-    req.username = this_user.username
-    res.render('trang-ca-nhan')
+    sql.connect(sqlConfig, (err) => {
+        if (err) {
+            console.log(err);
+            sql.close()
+        }
+        else {
+            let query = `SELECT * FROM HocSinh WHERE MSHS = '${this_user.username}'`
+            const request = new sql.Request()
+            request.query(query, (err, recordset) => {
+                if (err) {
+                    console.log(err)
+                    sql.close()
+                }
+                else {
+                    const jsonStringTKB = JSON.stringify(recordset.recordset, null, 2)
+                    fs.writeFile(path.join(__dirname, 'resources/views/JSON_Model/HocSinh.json'), jsonStringTKB, err => {
+                        if (err) {
+                            console.log(err)
+                            sql.close()
+                        }
+                        else {
+                            res.render('trang-ca-nhan', {
+                                MSHS: recordset.recordset[0].MSHS,
+                                HoTen: recordset.recordset[0].HoTen,
+                                TenLop: recordset.recordset[0].TenLop,
+                                NgaySinh: recordset.recordset[0].DOB,
+                                GioiTinh: recordset.recordset[0].GioiTinh,
+                                SDT: recordset.recordset[0].SDT,
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
 })
 
 app.delete('/dang-xuat', (req, res) => {
