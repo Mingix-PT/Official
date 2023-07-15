@@ -160,7 +160,7 @@ app.get('/', checkAuthenticated, (req, res) => {
                     sql.close()
                 }
                 else {
-                    const jsonStringTKB = JSON.stringify(recordset.recordset, null, 2)
+                    const jsonStringTKB = JSON.stringify(recordset.recordset, null, 2)  
                     fs.writeFile(path.join(__dirname, 'resources/views/JSON_Model/TKB.json'), jsonStringTKB, err => {
                         if (err) {
                             console.log(err)
@@ -185,6 +185,7 @@ app.get('/', checkAuthenticated, (req, res) => {
         }
     })
 })
+export default jsonStringTKB;
 
 app.get('/dang-nhap', checkNotAuthenticated, (req, res) => {
     res.render('dang-nhap')
@@ -231,5 +232,6 @@ function checkNotAuthenticated(req, res, next) {
     }
     next()
 }
+
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
