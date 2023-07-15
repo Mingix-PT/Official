@@ -167,7 +167,6 @@ app.get('/', checkAuthenticated, (req, res) => {
                             sql.close()
                         }
                         else {
-                            console.log('TKB.json created')
                             const request1 = new sql.Request()
                             request1.query(`SELECT TenLop FROM HocSinh WHERE MSHS = '${this_user.username}'`, (err, recordset1) => {
                                 if (err) {
@@ -219,6 +218,7 @@ app.get('/trang-ca-nhan', checkAuthenticated, (req, res) => {
                                 NgaySinh: recordset.recordset[0].DOB,
                                 GioiTinh: recordset.recordset[0].GioiTinh,
                                 SDT: recordset.recordset[0].SDT,
+                                Img: recordset.recordset[0].Img,
                             })
                         }
                     })
