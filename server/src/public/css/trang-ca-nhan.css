@@ -1,27 +1,41 @@
+.app {
+  position: relative; }
+
 .header {
-  position: fixed;
+  position: relative !important;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: #8be4ff; }
+  background-color: #8be4ff;
+  box-shadow: 0 2x 0 rgba(0, 0, 0, 0.15); }
 
 .header__navbar {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 100%; }
+
+.header__navbar-left {
+  display: flex;
+  position: relative;
+  flex-wrap: nowrap;
+  flex: 0.7; }
 
 .header__navbar-list {
+  /* display: flex; */
   list-style: none;
   padding-left: 0;
   margin-top: 15px;
-  position: relative; }
+  position: relative;
+  flex-wrap: nowrap; }
 
 .header__navbar-item:hover,
 .header__navbar-help:hover,
 .header__navbar-name:hover,
 .header__navbar-logout:hover {
   color: #706b6b;
-  cursor: pointer; }
+  /* cursor: pointer; */ }
 
 .header__navbar-item,
 .header__navbar-help,
@@ -45,6 +59,14 @@
   right: -15px;
   top: 0;
   transform: translateY(-30%); }
+
+.header__navbar-logo {
+  transform: scale(0.9);
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 80%;
+  height: 100%; }
 
 .header__navbar-search {
   display: flex;
@@ -72,9 +94,12 @@
   margin-top: 8px; }
 
 .button {
+  position: relative;
+  display: inline-block;
   border: none;
-  background-color: #fff;
-  cursor: pointer; }
+  background-color: transparent !important;
+  cursor: pointer;
+  padding: 0; }
 
 .icon:hover {
   color: #706b6b; }
@@ -110,6 +135,7 @@
   margin-left: 100px; }
 
 .container__user-infor-field-input {
+  background-color: #f3efef;
   width: 280px;
   height: auto;
   padding: 0 10px;
@@ -123,4 +149,5 @@
   height: 300px;
   display: block;
   margin-bottom: 15px;
-  margin-left: 100px; }
+  margin-left: 100px;
+  border-radius: 20px; }

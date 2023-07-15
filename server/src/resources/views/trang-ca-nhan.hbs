@@ -17,25 +17,45 @@
     <div class="app">
         <header class="header">
             <nav class="header__navbar">
-                <div class="header__navbar-search">
-                    <input type="text" class="header__navbar-input" placeholder="Tìm kiếm thông tin môn học">
-                    <button type="submit" class="button">
-                        <i class="fa-solid fa-magnifying-glass icon"></i>
-                    </button>
+                <div class="header__navbar-left">
+                    <a href="/">
+                        <button type="submit" class="button" style="width: 60px;">
+                            <img src="/img/Logo.png" class="header__navbar-logo">
+                        </button>
+                    </a>
+
+                    <div class="header__navbar-search">
+                        <input type="text" class="header__navbar-input" placeholder="Tìm kiếm thông tin môn học">
+                        <button type="submit" class="button" style="background-color: #fff;">
+                            <i class="fa-solid fa-magnifying-glass icon"></i>
+                        </button>
+                    </div>
                 </div>
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
-                        <a href="/Đăng nhập/Developing.html" class="header__navbar-help separate">
-                            <i class="fa-regular fa-circle-question"></i> Trợ giúp
-                        </a>
+                        <button type="button" class="button">
+                            <div class="header__navbar-help separate">
+                                <i class="fa-regular fa-circle-question"></i> Trợ giúp
+                            </div>
+                        </button>
                     </li>
                     <li class="header__navbar-item separate">
-                        <a href="http://localhost:3000/" class="header__navbar-name" style="margin: 0;">
-                            Trang chủ
+                        <a href="trang-ca-nhan">
+                            <button type="button" class="button">
+                                <div class="header__navbar-name" style="margin: 0;">
+                                    <i class="fa-solid fa-user"></i> Trang cá nhân
+                                </div>
+                            </button>
                         </a>
                     </li>
-                    <li class="header__navbar-item" style="margin: 0">
-                        <a href="http://localhost:3000/dang-nhap" class="header__navbar-logout">Đăng xuất</a>
+                    <li class="header__navbar-item " style="margin: 0">
+                        <form action="/dang-xuat?_method=DELETE" method="POST">
+                            <button type="submit" class="button">
+                                <div class="header__navbar-name" style="margin: 0;">
+                                    <i class="fa-solid fa-user"></i> Đăng xuất
+                                </div>
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -51,32 +71,30 @@
                 </div>
                 <div class="container__user-infor-field">
                     <label for="name" class="container__user-infor-field-name">Họ và tên:</label>
-                    <p>{{HoTen}}</p>
+                    <div class="container__user-infor-field-input" id="name">{{HoTen}}</div>
+                </div>
+                <div class="container__user-infor-field">
+                    <label for="id" class="container__user-infor-field-name">MSHS:</label>
+                    <div class="container__user-infor-field-input" id="id">{{MSHS}}</div>
                 </div>
                 <div class="container__user-infor-field">
                     <label for="place" class="container__user-infor-field-name">Lớp:</label>
-                    <input type="text" class="container__user-infor-field-input" id="place" readonly>
+                    <div class="container__user-infor-field-input" id="place">{{TenLop}}</div>
                 </div>
                 <div class="container__user-infor-field">
                     <label for="dob" class="container__user-infor-field-name">Ngày sinh:</label>
-                    <input type="date" class="container__user-infor-field-input" id="dob" readonly>
+                    <div class="container__user-infor-field-input" id="dob">{{NgaySinh}}</div>
                 </div>
                 <div class="container__user-infor-field">
-                    <label for="email" class="container__user-infor-field-name">Email:</label>
-                    <input type="email" class="container__user-infor-field-input" id="email" readonly>
-                </div>
-                <div class="container__user-infor-field">
-                    <label for="id" class="container__user-infor-field-name">MSSV:</label>
-                    <input type="id" class="container__user-infor-field-input" id="id" readonly>
+                    <label for="email" class="container__user-infor-field-name">Giới tính:</label>
+                    <div class="container__user-infor-field-input" id="email">{{GioiTinh}}</div>
                 </div>
                 <div class="container__user-infor-field">
                     <label for="PhoneNumber" class="container__user-infor-field-name">Số điện thoại:</label>
-                    <input type="number" class="container__user-infor-field-input" id="PhoneNumber" readonly>
+                    <div class="container__user-infor-field-input" id="PhoneNumber">{{SDT}}</div>
                 </div>
-
             </div>
         </div>
-        <script src="script.js"></script>
     </div>
 </body>
 

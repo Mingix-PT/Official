@@ -1,10 +1,11 @@
 [
   {
-    "MSHS": "K550001",
-    "HoTen": "Nguyen Binh An",
+    "MSHS": "K550004",
+    "HoTen": "Le Quang Minh",
     "SDT": "0123456789",
-    "DOB": "2008-10-22T00:00:00.000Z",
+    "DOB": "2007-04-16",
     "GioiTinh": "Nam",
-    "TenLop": "10A1"
+    "TenLop": "11A1",
+    "Img": null
   }
 ]
