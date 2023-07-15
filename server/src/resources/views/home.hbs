@@ -32,13 +32,14 @@
                         </a>
                     </li>
                     <li class="header__navbar-item separate">
-                        <a href="/trang-ca-nhan" class="header__navbar-name" style="margin: 0;">
-                            <i class="fa-solid fa-user"></i> Thông tin tài khoản
-                        </a>
+                        <form action=" /trang-ca-nhan" method="GET" class="header__navbar-name" style="margin: 0;">
+                            <i class="fa-solid fa-user"></i>
+                            <button type="submit">Thông tin tài khoản</button>
+                        </form>
                     </li>
                     <li class="header__navbar-item" style="margin: 0">
-                        <form action="/dang-xuat?_method=DELETE" method="POST" class="header__navbar-logout"><i
-                                class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <form action="/dang-xuat?_method=DELETE" method="POST" class="header__navbar-logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             <button type="submit" class="header__navbar-logout-button">
                                 Đăng xuất
                             </button>
@@ -47,6 +48,7 @@
                 </ul>
             </nav>
         </header>
+        <div>{{title}}</div>
         <div class="container">
             <div class="container__schedule">
                 <div class="schedule__row">
@@ -120,7 +122,7 @@
             </div>
 
         </div>
-        <script src="script.js"></script>
+        <script src="../../scripts/trang-chu-script.js"></script>
     </div>
 
 </body>

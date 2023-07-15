@@ -1,6 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy
-const crypto = require('crypto');
-const sql = require('mssql')
+const crypto = require('crypto')
 
 function initialize(passport, getUserByUsername, getUserById) {
     const authenticateUser = async (username, password, done) => {

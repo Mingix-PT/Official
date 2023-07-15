@@ -1,0 +1,92 @@
+[
+  {
+    "CaHoc": "Ca 1",
+    "Thu": "Thu 2",
+    "Phong": "A-101",
+    "TenMon": "Toan 10"
+  },
+  {
+    "CaHoc": "Ca 2",
+    "Thu": "Thu 2",
+    "Phong": "A-101",
+    "TenMon": "Ngu Van 10"
+  },
+  {
+    "CaHoc": "Ca 3",
+    "Thu": "Thu 2",
+    "Phong": "A-101",
+    "TenMon": "Ngoai Ngu 10"
+  },
+  {
+    "CaHoc": "Ca 1",
+    "Thu": "Thu 3",
+    "Phong": "A-101",
+    "TenMon": "Ngu Van 10"
+  },
+  {
+    "CaHoc": "Ca 2",
+    "Thu": "Thu 3",
+    "Phong": "A-101",
+    "TenMon": "Sinh Hoc 10"
+  },
+  {
+    "CaHoc": "Ca 3",
+    "Thu": "Thu 3",
+    "Phong": "A-101",
+    "TenMon": "Lich Su 10"
+  },
+  {
+    "CaHoc": "Ca 1",
+    "Thu": "Thu 4",
+    "Phong": "A-101",
+    "TenMon": "Dia Ly 10"
+  },
+  {
+    "CaHoc": "Ca 2",
+    "Thu": "Thu 4",
+    "Phong": "A-101",
+    "TenMon": "Giao Duc Cong Dan 10"
+  },
+  {
+    "CaHoc": "Ca 3",
+    "Thu": "Thu 4",
+    "Phong": "A-101",
+    "TenMon": "Ngoai Ngu 10"
+  },
+  {
+    "CaHoc": "Ca 1",
+    "Thu": "Thu 5",
+    "Phong": "A-101",
+    "TenMon": "Hoa Hoc 10"
+  },
+  {
+    "CaHoc": "Ca 2",
+    "Thu": "Thu 5",
+    "Phong": "A-101",
+    "TenMon": "Toan 10"
+  },
+  {
+    "CaHoc": "Ca 3",
+    "Thu": "Thu 5",
+    "Phong": "A-101",
+    "TenMon": "Cong Nghe 10"
+  },
+  {
+    "CaHoc": "Ca 1",
+    "Thu": "Thu 6",
+    "Phong": "A-101",
+    "TenMon": "Vat Ly 10"
+  },
+  {
+    "CaHoc": "Ca 2",
+    "Thu": "Thu 6",
+    "Phong": "SVD",
+    "TenMon": "The Duc 10"
+  },
+  {
+    "CaHoc": "Ca 3",
+    "Thu": "Thu 6",
+    "Phong": "C-401",
+    "TenMon": "Tin Hoc 10"
+  }
+]

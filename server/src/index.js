@@ -1,6 +1,3 @@
-// if (process.env.NODE_ENV !== 'production') {
-//     require('dotenv').config()
-// }
 // author: Le Minh
 
 const express = require('express')
@@ -17,15 +14,15 @@ const initializePassport = require('./passport-config')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
-
-initializePassport(
-    passport,
-    username => users.find(user => user.username === username),
-    id => users.find(user => user.id === id)
-)
+const fs = require('fs')
 const port = 3000
+const route = require('./routes')
+const { request } = require('http')
+const exp = require('constants')
 
 const users = []
+const this_user = []
+
 
 const sqlConfig = {
     server: "DESKTOP-D1SFR6N",
@@ -41,29 +38,42 @@ const sqlConfig = {
     }
 }
 
-const route = require('./routes')
-const { request } = require('http')
-const exp = require('constants')
-
 sql.connect(sqlConfig, (err) => {
     if (err) console.log(err)
     else {
         let request = new sql.Request()
         request.query(`SELECT MSHS, Password FROM DangNhap`, (err, recordset) => {
-            if (err) console.log(err)
+            if (err) {
+                console.log(err);
+                sql.close();
+                return;
+            }
             else {
                 for (let i = 0; i < recordset.recordset.length; i++) {
-                    ``
                     users.push({
                         id: Date.now().toString(),
                         username: recordset.recordset[i].MSHS,
                         password: recordset.recordset[i].Password,
                     })
                 }
+                sql.close();
             }
         })
     }
 })
+
+initializePassport(
+    passport,
+    username => {
+        let found = users.find(user => user.username === username)
+        this_user.id = found.id
+        this_user.username = found.username
+        this_user.password = found.password
+        return found
+    },
+    id => users.find(user => user.id === id)
+)
+
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -131,6 +141,49 @@ app.post('/dang-nhap', checkNotAuthenticated, passport.authenticate('local', {
 
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('home')
+    sql.connect(sqlConfig, (err) => {
+        if (err) {
+            console.log(err);
+            sql.close()
+        }
+        else {
+            let query = `SELECT CaHoc, Thu, Phong, TenMon 
+                        FROM TKB JOIN MonHoc ON TKB.MaMon = MonHoc.MaMon
+                        WHERE TenLop = (SELECT TenLop
+                        FROM HocSinh
+                        WHERE MSHS = '${this_user.username}')
+                        ORDER BY Thu, CaHoc`
+            const request = new sql.Request()
+            request.query(query, (err, recordset) => {
+                if (err) {
+                    console.log(err)
+                    sql.close()
+                }
+                else {
+                    const jsonStringTKB = JSON.stringify(recordset.recordset, null, 2)
+                    fs.writeFile(path.join(__dirname, 'resources/views/JSON_Model/TKB.json'), jsonStringTKB, err => {
+                        if (err) {
+                            console.log(err)
+                            sql.close()
+                        }
+                        else {
+                            console.log('TKB.json created')
+                            const request1 = new sql.Request()
+                            request1.query(`SELECT TenLop FROM HocSinh WHERE MSHS = '${this_user.username}'`, (err, recordset1) => {
+                                if (err) {
+                                    console.log(err)
+                                    sql.close()
+                                }
+                                else {
+                                    sql.close()
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
 })
 
 app.get('/dang-nhap', checkNotAuthenticated, (req, res) => {
@@ -138,6 +191,7 @@ app.get('/dang-nhap', checkNotAuthenticated, (req, res) => {
 })
 
 app.get('/trang-ca-nhan', checkAuthenticated, (req, res) => {
+    req.username = this_user.username
     res.render('trang-ca-nhan')
 })
 
