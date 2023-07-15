@@ -1,5 +1,6 @@
 .app{
     position: relative;
+
 }
 .header{
     position: relative !important;
@@ -122,10 +123,19 @@
     color: #706b6b;
 }
 
+.tittle{
+    font-family:'Lugrasimo';
+    text-align: center;
+    font-size: 5rem;
+    color: rgb(224, 104, 60);
+    padding: 10px 0;
+    margin-top: 80px;
+}
+
 
 .container{
     position: absolute;
-    margin: 180px 50px 200px 0px;
+    margin: 0px 50px 0px 0px;
     padding: 50px 60px 40px 60px;
     background: #FFFFFF;
     border-radius: 20px;

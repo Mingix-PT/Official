@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="/Trang chủ/base.css">
     <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="icon" href="/Đăng nhập/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -62,14 +65,17 @@
             <h1 class="container__title">Trang thông tin cá nhân</h1>
 
             <div class="container__user-infor">
-                <div class="container__user-infor-field">
-                    <!-- <label for="avatar" class="container__user-infor-field-name"></label> -->
-                    <img id="avatar" src="unknow.png" alt="Ảnh đại diện"
-                        class="container__user-infor-field-input avatar">
-                </div>
-                <div class="container__user-infor-field">
-                    <label for="name" class="container__user-infor-field-name">Họ và tên:</label>
-                    <div class="container__user-infor-field-input" id="name"></div> 
+                <ul>
+                    <div class="li">
+                        <div class="container__user-infor-field">
+                            <img id="avatar" src="unknow.png" alt="Ảnh đại diện"
+                            class="container__user-infor-field-input avatar">
+                        </div>
+                    </div>
+                    <div class="li">
+                        <div class="container__user-infor-field">
+                            <label for="name" class="container__user-infor-field-name">Họ và tên:</label>
+                        <div class="container__user-infor-field-input" id="name"></div> 
                 </div>
                 <div class="container__user-infor-field">
                     <label for="place" class="container__user-infor-field-name">Lớp:</label>
@@ -91,6 +97,10 @@
                     <label for="PhoneNumber" class="container__user-infor-field-name">Số điện thoại:</label>
                     <div class="container__user-infor-field-input" id="PhoneNumber"></div>
                 </div>
+                    </div>
+                </ul>
+                
+                
 
             </div>
         </div>
