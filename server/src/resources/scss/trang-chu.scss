@@ -74,15 +74,13 @@
 }
 
 .header__navbar-logo {
-    transform: scale(0.9);
+    transform: scale(0.5);
     position: absolute;
+    z-index: 100;
     top: 0;
     left: 10px;
     width: 80%;
     height: 100%;
-
-
-
 }
 
 .header__navbar-search {
