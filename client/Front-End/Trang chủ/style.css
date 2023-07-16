@@ -27,7 +27,6 @@
 }
 
 .header__navbar-list{
-    /* display: flex; */
     list-style: none;
     padding-left: 0;
     margin-top: 15px;
@@ -37,16 +36,13 @@
 
 .header__navbar-item:hover,
 .header__navbar-help:hover,
-/* .header__navbar-link:hover, */
 .header__navbar-name:hover,
 .header__navbar-logout:hover{
     color: #706b6b;
-    /* cursor: pointer; */
 }
 
 .header__navbar-item,
 .header__navbar-help,
-/* .header__navbar-link, */
 .header__navbar-name,
 .header__navbar-logout{
     display: inline-block;
@@ -71,6 +67,37 @@
     right: -15px;
     top: 0;
     transform: translateY(-30%);
+}
+
+.header__navar-menu{
+    position: relative;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.menu{
+    /* display: flex; */
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: #efefef 0.2px solid;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    display: none;
+}
+
+.menu-item{
+    flex: 1;
+    border: none !important;
+    padding: 5px 10px;
+    background-color: transparent !important;
+    cursor: pointer;
+}
+
+.menu-item:hover{
+    color: #fea05d;
 }
 
 .header__navbar-logo{
@@ -147,7 +174,6 @@
 
 .container__schedule {
     margin: 0;
-    position: relative;
     display: flex;
     width: 100%;
     height: auto;
@@ -176,7 +202,7 @@
  } 
 .schedule__row{
     display: flex;
-    overflow: hidden;
+    overflow: auto;
     flex-direction: row;
     
 }
@@ -190,8 +216,9 @@
     height: 70px;
     align-items: center;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
     user-select: none;
+    cursor: pointer;
 }
 
 .shedule__row-element-input{
@@ -218,4 +245,25 @@
     font-size: 1.6rem;
     padding-top: 25px;
 }
-  
+.hidden{
+    list-style: none;
+    font-size: 1.6rem;
+    border: #ededed solid 0.2px !important;
+    position: absolute;
+    padding: 3px 10px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin: 5px 0;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+    display: none;
+ }
+ .shedule__row-element:hover .hidden{
+    display: block;
+ }
+ li{
+    display: flex;
+ }
+ .subject-infor{
+    padding-left: 3px;
+    flex: 1;
+ }

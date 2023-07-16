@@ -129,6 +129,8 @@
 
 .container{
     margin-top: 70px;
+    width: 100%;
+    position: absolute;
     
 
 }
@@ -141,29 +143,31 @@
     padding: 10px 0;
 }
 
-ul{
+.ul{
     display: flex;
+    width: 100%;
     padding: 0;
     margin: 50px 0;
-    justify-self: space-between;
 }
 .li{
     margin: 0;
     margin-top: 50px;
+    flex: 1;
 }
 
 
 .container__user-infor {
-    /* max-width: 400px; */
+    width: 100%;
     margin: 0;  
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
 }
 .container__user-infor-field{
     display: flex;
-    width: 500px;
+    align-items: center;
     height: auto;
     border: none;
     font-size: 1.8rem;
