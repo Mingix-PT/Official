@@ -23,6 +23,7 @@ const exp = require('constants')
 const users = []
 const this_user = []
 
+console.log(crypto.createHash('md5').update('123').digest('hex'))
 
 const sqlConfig = {
     server: "DESKTOP-D1SFR6N",
@@ -219,14 +220,12 @@ app.post('/doi-mat-khau', checkAuthenticated, (req, res) => {
     let newPW = req.body.newPW
     let confirmPW = req.body.confirmPW
     let hashedOldPW = crypto.createHash('md5').update(oldPW).digest('hex')
-    console.log(`Old PW: ${oldPW}
-                Old hashed PW: ${hashedOldPW}`)
     if (this_user.password !== hashedOldPW) {
-        res.render('doi-mat-khau', { error: 'Mật khẩu cũ không đúng' })
+        res.render('doi-mat-khau', { error: 'Mật khẩu cũ không đúng', this_user })
     }
     else {
         if (newPW !== confirmPW) {
-            res.render('doi-mat-khau', { error: 'Mật khẩu mới không khớp' })
+            res.render('doi-mat-khau', { error: 'Mật khẩu mới không khớp', this_user })
         }
         else {
             let newHashedPW = crypto.createHash('md5').update(newPW).digest('hex')
@@ -246,7 +245,17 @@ app.post('/doi-mat-khau', checkAuthenticated, (req, res) => {
                             sql.close()
                         }
                         else {
-                            redirect('/dang-nhap')
+                            sql.close()
+                            for (let i = 0; i < users.length; i++) {
+                                if (users[i].username === this_user.username) {
+                                    users[i].password = newHashedPW
+                                    break
+                                }
+                            }
+                            req.logOut(function (err) {
+                                if (err) console.log(err)
+                                res.redirect('/dang-nhap')
+                            })
                         }
                     })
                 }
