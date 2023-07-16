@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gakusei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="styl.css">
+    <link rel="stylesheet" href="/Trang chủ/base.css">
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="icon" href="/Đăng nhập/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <nav class="header__navbar">
+                <div class="header__navbar-left">
+                    <button type="submit" class="button" style="width: 60px;">
+                        <img src="/Logo.png" class="header__navbar-logo">
+                    </button>
+
+                    <div class="header__navbar-search">
+                        <input type="text" class="header__navbar-input" placeholder="Tìm kiếm thông tin môn học">
+                        <button type="submit" class="button" style="background-color: #fff;">
+                            <i class="fa-solid fa-magnifying-glass icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul class="header__navbar-list">
+                    <li class="header__navbar-item">
+                        <button type="button" class="button">
+                            <div class="header__navbar-help separate">
+                                <i class="fa-regular fa-circle-question"></i> Trợ giúp
+                            </div>
+                        </button>
+                    </li>
+                    <li class="header__navbar-item separate">
+                        <button type="button" class="button">
+                            <div class="header__navbar-name" style="margin: 0;">
+                                <i class="fa-solid fa-user"></i> Trang cá nhân
+                            </div>
+                        </button>
+
+                    </li>
+
+                    <li class="header__navbar-item " style="margin: 0">
+                        <button type="button" class="button">
+                            <div class="header__navbar-logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
+                            </div>
+                        </button>
+
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <h1 class="container__title">Đổi mật khẩu</h1>
+            <div class="container-flex">
+            <div class="none"></div>
+            <form class="container__change-password" >
+                <div class="container__password">
+                    <label for="password" class="container__password-card">Mật khẩu hiện tại:</label>
+                    <input type="text" class="container__password-input" placeholder="Mật khẩu hiện tại">
+                </div>
+                <div class="container__password">
+                    <label for="password" class="container__password-card">Mật khẩu mới:</label>
+                    <input type="text" class="container__password-input" placeholder="Mật khẩu mới">                </div>
+                <div class="container__password">
+                    <label for="password" class="container__password-card">Nhập lại mật khẩu mới:</label>
+                    <input type="text" class="container__password-input" placeholder="Mật khẩu mới">                </div>
+                <a href="/Đăng nhập/Developing.html" class="forgot-password"> Quên mật khẩu?</a>
+                <button type="submit" class="save">Lưu thay đổi</button>
+            </form>
+            <div class="none"></div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
