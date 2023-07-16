@@ -108,9 +108,21 @@
   margin-top: 70px; }
 
 .container__title {
+  font-family: 'Lugrasimo';
   text-align: center;
-  font-size: 2rem;
+  font-size: 4rem;
+  color: #e0683c;
   padding: 10px 0; }
+
+ul {
+  display: flex;
+  padding: 0;
+  margin: 50px 0;
+  justify-self: space-between; }
+
+.li {
+  margin: 0;
+  margin-top: 50px; }
 
 .container__user-infor {
   /* max-width: 400px; */
@@ -125,8 +137,8 @@
   width: 500px;
   height: auto;
   border: none;
-  font-size: 1.6rem;
-  margin-bottom: 10px; }
+  font-size: 1.8rem;
+  margin-bottom: 40px; }
 
 .container__user-infor-field-name {
   display: inline-block;
@@ -135,7 +147,7 @@
   margin-left: 100px; }
 
 .container__user-infor-field-input {
-  background-color: #f3efef;
+  background-color: transparent;
   width: 280px;
   height: auto;
   padding: 0 10px;
@@ -148,6 +160,4 @@
   width: 300px;
   height: 300px;
   display: block;
-  margin-bottom: 15px;
-  margin-left: 100px;
   border-radius: 20px; }

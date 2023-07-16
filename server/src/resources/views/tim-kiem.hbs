@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="/css/trang-ca-nhan.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
-    <link rel="icon" href="/Đăng nhập/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -66,50 +62,32 @@
                 </ul>
             </nav>
         </header>
-        <div class="container">
-            <h1 class="container__title">Trang thông tin cá nhân</h1>
 
-            <div class="container__user-infor">
-                <ul>
-                    <div class="li">
-                        <div class="container__user-infor-field">
-                            <img id="avatar" src="/img/{{MSHS}}.jpg" alt="Ảnh đại diện"
-                                class="container__user-infor-field-input avatar">
-                        </div>
-                    </div>
-                    <div class="li">
-                        <div class="container__user-infor-field">
-                            <label for="name" class="container__user-infor-field-name">Họ và tên:</label>
-                            <div class="container__user-infor-field-input" id="name">{{HoTen}}</div>
-                        </div>
-                        <div class="container__user-infor-field">
-                            <label for="id" class="container__user-infor-field-name">MSHS:</label>
-                            <div class="container__user-infor-field-input" id="id">{{MSHS}}</div>
-                        </div>
-                        <div class="container__user-infor-field">
-                            <label for="place" class="container__user-infor-field-name">Lớp:</label>
-                            <div class="container__user-infor-field-input" id="place">{{TenLop}}</div>
-                        </div>
-                        <div class="container__user-infor-field">
-                            <label for="dob" class="container__user-infor-field-name">Ngày sinh:</label>
-                            <div class="container__user-infor-field-input" id="dob">{{NgaySinh}}</div>
-                        </div>
-                        <div class="container__user-infor-field">
-                            <label for="email" class="container__user-infor-field-name">Giới tính:</label>
-                            <div class="container__user-infor-field-input" id="email">{{GioiTinh}}</div>
-                        </div>
-                        <div class="container__user-infor-field">
-                            <label for="PhoneNumber" class="container__user-infor-field-name">Số điện thoại:</label>
-                            <div class="container__user-infor-field-input" id="PhoneNumber">{{SDT}}</div>
-                        </div>
-                    </div>
-                </ul>
-
-
-
+        <div class="li">
+            <div class="container__user-infor-field">
+                <label for="name" class="container__user-infor-field-name">Họ và tên:</label>
+                <div class="container__user-infor-field-input" id="name">{{HoTen}}</div>
+            </div>
+            <div class="container__user-infor-field">
+                <label for="id" class="container__user-infor-field-name">MSGV:</label>
+                <div class="container__user-infor-field-input" id="id">{{MSGV}}</div>
+            </div>
+            <div class="container__user-infor-field">
+                <label for="place" class="container__user-infor-field-name">Số điện thoại:</label>
+                <div class="container__user-infor-field-input" id="place">{{SDT}}</div>
+            </div>
+            <div class="container__user-infor-field">
+                <label for="dob" class="container__user-infor-field-name">Ngày sinh:</label>
+                <div class="container__user-infor-field-input" id="dob">{{NgaySinh}}</div>
+            </div>
+            <div class="container__user-infor-field">
+                <label for="email" class="container__user-infor-field-name">Email:</label>
+                <div class="container__user-infor-field-input" id="email">{{Email}}</div>
+            </div>
+            <div class="container__user-infor-field">
+                <label for="PhoneNumber" class="container__user-infor-field-name">Tổ chuyên môn</label>
+                <div class="container__user-infor-field-input" id="PhoneNumber">{{ToChuyenMon}}</div>
             </div>
         </div>
     </div>
 </body>
-
-</html>

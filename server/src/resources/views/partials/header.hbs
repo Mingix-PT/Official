@@ -1,1 +1,45 @@
-<h1>HEADER</h1>
+<header class="header">
+    <nav class="header__navbar">
+        <div class="header__navbar-left">
+            <a href="/">
+                <button type="submit" class="button" style="width: 60px;">
+                    <img src="/img/Logo.png" class="header__navbar-logo">
+                </button>
+            </a>
+
+            <div class="header__navbar-search">
+                <input type="text" class="header__navbar-input" placeholder="Tìm kiếm thông tin môn học">
+                <button type="submit" class="button" style="background-color: #fff;">
+                    <i class="fa-solid fa-magnifying-glass icon"></i>
+                </button>
+            </div>
+        </div>
+        <ul class="header__navbar-list">
+            <li class="header__navbar-item">
+                <button type="button" class="button">
+                    <div class="header__navbar-help separate">
+                        <i class="fa-regular fa-circle-question"></i> Trợ giúp
+                    </div>
+                </button>
+            </li>
+            <li class="header__navbar-item separate">
+                <a href="trang-ca-nhan">
+                    <button type="button" class="button">
+                        <div class="header__navbar-name" style="margin: 0;">
+                            <i class="fa-solid fa-user"></i> Trang cá nhân
+                        </div>
+                    </button>
+                </a>
+            </li>
+            <li class="header__navbar-item " style="margin: 0">
+                <form action="/dang-xuat?_method=DELETE" method="POST">
+                    <button type="submit" class="button">
+                        <div class="header__navbar-name" style="margin: 0;">
+                            <i class="fa-solid fa-user"></i> Đăng xuất
+                        </div>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>

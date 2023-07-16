@@ -66,7 +66,6 @@ initializePassport(
     passport,
     username => {
         let found = users.find(user => user.username === username)
-        this_user.id = found.id
         this_user.username = found.username
         this_user.password = found.password
         return found
@@ -140,15 +139,15 @@ app.post('/dang-nhap', checkNotAuthenticated, passport.authenticate('local', {
 // route(app)
 
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('home')
     sql.connect(sqlConfig, (err) => {
         if (err) {
             console.log(err);
             sql.close()
         }
         else {
-            let query = `SELECT CaHoc, Thu, Phong, TenMon 
-                        FROM TKB JOIN MonHoc ON TKB.MaMon = MonHoc.MaMon
+            let query = `SELECT CaHoc, Thu, Phong, TenMon, HoTen
+                        FROM TKB JOIN MonHoc ON TKB.MaMon = MonHoc.MaMon 
+                        JOIN GiaoVien ON TKB.MSGV = GiaoVien.MSGV
                         WHERE TenLop = (SELECT TenLop
                         FROM HocSinh
                         WHERE MSHS = '${this_user.username}')
@@ -160,24 +159,25 @@ app.get('/', checkAuthenticated, (req, res) => {
                     sql.close()
                 }
                 else {
-                    const jsonStringTKB = JSON.stringify(recordset.recordset, null, 2)
-                    fs.writeFile(path.join(__dirname, 'resources/views/JSON_Model/TKB.json'), jsonStringTKB, err => {
-                        if (err) {
-                            console.log(err)
-                            sql.close()
+                    let Ca1 = []
+                    let Ca2 = []
+                    let Ca3 = []
+                    for (let i = 0; i < recordset.recordset.length; i++) {
+                        if (recordset.recordset[i].CaHoc === 'Ca 1') {
+                            Ca1.push(recordset.recordset[i])
+                        }
+                        else if (recordset.recordset[i].CaHoc === 'Ca 2') {
+                            Ca2.push(recordset.recordset[i])
                         }
                         else {
-                            const request1 = new sql.Request()
-                            request1.query(`SELECT TenLop FROM HocSinh WHERE MSHS = '${this_user.username}'`, (err, recordset1) => {
-                                if (err) {
-                                    console.log(err)
-                                    sql.close()
-                                }
-                                else {
-                                    sql.close()
-                                }
-                            })
+                            Ca3.push(recordset.recordset[i])
                         }
+                    }
+                    sql.close()
+                    res.render('home', {
+                        Ca1,
+                        Ca2,
+                        Ca3
                     })
                 }
             })
@@ -203,25 +203,54 @@ app.get('/trang-ca-nhan', checkAuthenticated, (req, res) => {
                     console.log(err)
                     sql.close()
                 }
+                res.render('trang-ca-nhan', {
+                    MSHS: recordset.recordset[0].MSHS,
+                    HoTen: recordset.recordset[0].HoTen,
+                    TenLop: recordset.recordset[0].TenLop,
+                    NgaySinh: recordset.recordset[0].DOB,
+                    GioiTinh: recordset.recordset[0].GioiTinh,
+                    SDT: recordset.recordset[0].SDT,
+                    Img: recordset.recordset[0].Img,
+                })
+            })
+
+        }
+    })
+})
+
+app.get('/tim-kiem', (req, res) => {
+    const maGV = req.query.maGV
+    sql.connect(sqlConfig, (err) => {
+        if (err) {
+            console.log(err);
+            sql.close()
+        }
+        else {
+            let query = `SELECT * FROM GiaoVien WHERE MSGV = '${maGV}'`
+            const request = new sql.Request()
+            request.query(query, (err, recordset) => {
+                if (err) {
+                    console.log(err)
+                    sql.close()
+                }
                 else {
-                    const jsonStringTKB = JSON.stringify(recordset.recordset, null, 2)
-                    fs.writeFile(path.join(__dirname, 'resources/views/JSON_Model/HocSinh.json'), jsonStringTKB, err => {
-                        if (err) {
-                            console.log(err)
-                            sql.close()
-                        }
-                        else {
-                            res.render('trang-ca-nhan', {
-                                MSHS: recordset.recordset[0].MSHS,
-                                HoTen: recordset.recordset[0].HoTen,
-                                TenLop: recordset.recordset[0].TenLop,
-                                NgaySinh: recordset.recordset[0].DOB,
-                                GioiTinh: recordset.recordset[0].GioiTinh,
-                                SDT: recordset.recordset[0].SDT,
-                                Img: recordset.recordset[0].Img,
-                            })
-                        }
-                    })
+                    if (recordset.recordset.length === 0) {
+                        res.render('tim-kiem', {
+                            error: 'Mã giáo viên không tồn tại'
+                        })
+                    }
+                    else {
+                        console.log(`Ho Ten: ${recordset.recordset[0].HoTen}`)
+                        res.render('tim-kiem', {
+                            HoTen: recordset.recordset[0].HoTen,
+                            MSGV: recordset.recordset[0].MSGV,
+                            SDT: recordset.recordset[0].SDT,
+                            Email: recordset.recordset[0].Email,
+                            ToChuyenMon: recordset.recordset[0].ToChuyenMon,
+                            NgaySinh: recordset.recordset[0].DOB,
+                        })
+                        sql.close()
+                    }
                 }
             })
         }

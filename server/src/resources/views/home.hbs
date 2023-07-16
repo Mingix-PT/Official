@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/trang-chu.css">
-    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
     <title>Gakusei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/trang-chu.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
 
 <body>
@@ -23,12 +23,15 @@
                         </button>
                     </a>
 
-                    <div class="header__navbar-search">
-                        <input type="text" class="header__navbar-input" placeholder="Tìm kiếm thông tin môn học">
-                        <button type="submit" class="button" style="background-color: #fff;">
-                            <i class="fa-solid fa-magnifying-glass icon"></i>
-                        </button>
-                    </div>
+                    <form action="/tim-kiem" method="GET">
+                        <div class="header__navbar-search">
+                            <input type="text" name="maGV" class="header__navbar-input"
+                                placeholder="Tìm kiếm thông tin giáo viên">
+                            <button type="submit" class="button" style="background-color: #fff;">
+                                <i class="fa-solid fa-magnifying-glass icon"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
@@ -73,62 +76,36 @@
                     <div class="shedule__row-element shift">
                         1
                     </div>
+                    {{#each Ca1}}
                     <div class="shedule__row-element">
                         <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                        {{this.TenMon}}
+                        {{this.Phong}}
+                        {{this.HoTen}}
                     </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
+                    {{/each}}
                 </div>
                 <div class="schedule__row">
                     <div class="shedule__row-element shift">
                         2
                     </div>
+                    {{#each Ca2}}
                     <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                        {{this.TenMon}}
                     </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
+                    {{/each}}
                 </div>
                 <div class="schedule__row">
                     <div class="shedule__row-element shift">
                         3
                     </div>
+                    {{#each Ca3}}
                     <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
+                        {{this.TenMon}}
                     </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
-                    <div class="shedule__row-element">
-                        <input type="text" class="shedule__row-element-input" class="subject" readonly selecte disabled>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
+    </div>
 </body>
