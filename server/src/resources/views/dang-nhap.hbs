@@ -18,6 +18,11 @@
         <div class="logo2">Gakusei</div>
         <h2 class="logo3">Đăng nhập để xem thời khóa biểu của bạn</h2>
         <div class="loginbox">
+            <div class="error-message">
+                {{#if messages.error}}
+                {{messages.error}}
+                {{/if}}
+            </div>
             <form action="/dang-nhap" method="post">
                 <div class="log_row">
                     <label for="account" class="log_infor" title="Tên tài khoản" style="font-size: 18px;">

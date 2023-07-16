@@ -38,34 +38,11 @@ const sqlConfig = {
     }
 }
 
-sql.connect(sqlConfig, (err) => {
-    if (err) console.log(err)
-    else {
-        let request = new sql.Request()
-        request.query(`SELECT MSHS, Password FROM DangNhap`, (err, recordset) => {
-            if (err) {
-                console.log(err);
-                sql.close();
-                return;
-            }
-            else {
-                for (let i = 0; i < recordset.recordset.length; i++) {
-                    users.push({
-                        id: Date.now().toString(),
-                        username: recordset.recordset[i].MSHS,
-                        password: recordset.recordset[i].Password,
-                    })
-                }
-                sql.close();
-            }
-        })
-    }
-})
-
 initializePassport(
     passport,
     username => {
         let found = users.find(user => user.username === username)
+        if (found == null) return null
         this_user.username = found.username
         this_user.password = found.password
         return found
@@ -138,54 +115,30 @@ app.post('/dang-nhap', checkNotAuthenticated, passport.authenticate('local', {
 // Route init
 // route(app)
 
-app.get('/', checkAuthenticated, (req, res) => {
+app.get('/dang-nhap', checkNotAuthenticated, (req, res) => {
     sql.connect(sqlConfig, (err) => {
-        if (err) {
-            console.log(err);
-            sql.close()
-        }
+        if (err) console.log(err)
         else {
-            let query = `SELECT CaHoc, Thu, Phong, TenMon, HoTen
-                        FROM TKB JOIN MonHoc ON TKB.MaMon = MonHoc.MaMon 
-                        JOIN GiaoVien ON TKB.MSGV = GiaoVien.MSGV
-                        WHERE TenLop = (SELECT TenLop
-                        FROM HocSinh
-                        WHERE MSHS = '${this_user.username}')
-                        ORDER BY Thu, CaHoc`
-            const request = new sql.Request()
-            request.query(query, (err, recordset) => {
+            let request = new sql.Request()
+            request.query(`SELECT MSHS, Password FROM DangNhap`, (err, recordset) => {
                 if (err) {
-                    console.log(err)
-                    sql.close()
+                    console.log(err);
+                    sql.close();
+                    return;
                 }
                 else {
-                    let Ca1 = []
-                    let Ca2 = []
-                    let Ca3 = []
                     for (let i = 0; i < recordset.recordset.length; i++) {
-                        if (recordset.recordset[i].CaHoc === 'Ca 1') {
-                            Ca1.push(recordset.recordset[i])
-                        }
-                        else if (recordset.recordset[i].CaHoc === 'Ca 2') {
-                            Ca2.push(recordset.recordset[i])
-                        }
-                        else {
-                            Ca3.push(recordset.recordset[i])
-                        }
+                        users.push({
+                            id: Date.now().toString(),
+                            username: recordset.recordset[i].MSHS,
+                            password: recordset.recordset[i].Password,
+                        })
                     }
-                    sql.close()
-                    res.render('home', {
-                        Ca1,
-                        Ca2,
-                        Ca3
-                    })
+                    sql.close();
                 }
             })
         }
     })
-})
-
-app.get('/dang-nhap', checkNotAuthenticated, (req, res) => {
     res.render('dang-nhap')
 })
 
@@ -218,7 +171,7 @@ app.get('/trang-ca-nhan', checkAuthenticated, (req, res) => {
     })
 })
 
-app.get('/tim-kiem', (req, res) => {
+app.get('/tim-kiem', checkAuthenticated, (req, res) => {
     const maGV = req.query.maGV
     sql.connect(sqlConfig, (err) => {
         if (err) {
@@ -251,6 +204,101 @@ app.get('/tim-kiem', (req, res) => {
                         })
                         sql.close()
                     }
+                }
+            })
+        }
+    })
+})
+
+app.get('/doi-mat-khau', checkAuthenticated, (req, res) => {
+    res.render('doi-mat-khau', { this_user })
+})
+
+app.post('/doi-mat-khau', checkAuthenticated, (req, res) => {
+    let oldPW = req.body.oldPW
+    let newPW = req.body.newPW
+    let confirmPW = req.body.confirmPW
+    let hashedOldPW = crypto.createHash('md5').update(oldPW).digest('hex')
+    console.log(`Old PW: ${oldPW}
+                Old hashed PW: ${hashedOldPW}`)
+    if (this_user.password !== hashedOldPW) {
+        res.render('doi-mat-khau', { error: 'Mật khẩu cũ không đúng' })
+    }
+    else {
+        if (newPW !== confirmPW) {
+            res.render('doi-mat-khau', { error: 'Mật khẩu mới không khớp' })
+        }
+        else {
+            let newHashedPW = crypto.createHash('md5').update(newPW).digest('hex')
+            sql.connect(sqlConfig, (err) => {
+                if (err) {
+                    console.log(err);
+                    sql.close()
+                }
+                else {
+                    let query = `UPDATE DangNhap 
+                                SET Password = '${newHashedPW}' 
+                                WHERE MSHS = '${this_user.username}'`
+                    const request = new sql.Request()
+                    request.query(query, (err, recordset) => {
+                        if (err) {
+                            console.log(err)
+                            sql.close()
+                        }
+                        else {
+                            redirect('/dang-nhap')
+                        }
+                    })
+                }
+            })
+        }
+    }
+})
+
+app.get('/', checkAuthenticated, (req, res) => {
+    sql.connect(sqlConfig, (err) => {
+        if (err) {
+            console.log(err);
+            sql.close()
+        }
+        else {
+            let query = `SELECT TenLop, CaHoc, Thu, Phong, TenMon, HoTen
+                        FROM TKB JOIN MonHoc ON TKB.MaMon = MonHoc.MaMon 
+                        JOIN GiaoVien ON TKB.MSGV = GiaoVien.MSGV
+                        WHERE TenLop = (SELECT TenLop
+                        FROM HocSinh
+                        WHERE MSHS = '${this_user.username}')
+                        ORDER BY Thu, CaHoc`
+            const request = new sql.Request()
+            request.query(query, (err, recordset) => {
+                if (err) {
+                    console.log(err)
+                    sql.close()
+                }
+                else {
+                    let Ca1 = []
+                    let Ca2 = []
+                    let Ca3 = []
+                    let Lop = []
+                    Lop.push(recordset.recordset[0].TenLop)
+                    for (let i = 0; i < recordset.recordset.length; i++) {
+                        if (recordset.recordset[i].CaHoc === 'Ca 1') {
+                            Ca1.push(recordset.recordset[i])
+                        }
+                        else if (recordset.recordset[i].CaHoc === 'Ca 2') {
+                            Ca2.push(recordset.recordset[i])
+                        }
+                        else {
+                            Ca3.push(recordset.recordset[i])
+                        }
+                    }
+                    sql.close()
+                    res.render('home', {
+                        Lop,
+                        Ca1,
+                        Ca2,
+                        Ca3,
+                    })
                 }
             })
         }

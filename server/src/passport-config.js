@@ -6,7 +6,7 @@ function initialize(passport, getUserByUsername, getUserById) {
         const user = getUserByUsername(username)
         if (user == null) {
             console.log('No user with that username')
-            return done(null, false, { message: 'No user with that username' })
+            return done(null, false, { message: 'Tên đăng nhập không tồn tại.' })
         }
         try {
             let hashedPassword = crypto.createHash('md5').update(password).digest('hex');
@@ -15,7 +15,7 @@ function initialize(passport, getUserByUsername, getUserById) {
             }
             else {
                 console.log('Password incorrect')
-                return done(null, false, { message: 'Password incorrect' })
+                return done(null, false, { message: 'Mật khẩu nhập sai. Vui lòng nhập lại.' })
             }
         } catch (e) {
             return done(e)
