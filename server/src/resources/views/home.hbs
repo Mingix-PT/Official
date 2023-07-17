@@ -41,17 +41,19 @@
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
                         <button type="submit" class="button">
-                            <div class="header__navbar-help separate">
+                            <div class="header__navbar-help separate" id="help">
                                 <i class="fa-regular fa-circle-question"></i> Trợ giúp
                             </div>
                         </button>
                     </li>
                     <li class="header__navbar-item separate">
-                        <button type="submit" class="button">
-                            <div class="header__navbar-name" style="margin: 0;">
-                                <i class="fa-solid fa-user"></i> {{HoTen}} {{this_user.username}}
-                            </div>
-                        </button>
+                        <a href="/trang-ca-nhan">
+                            <button type="submit" class="button">
+                                <div class="header__navbar-name" style="margin: 0;">
+                                    <i class="fa-solid fa-user"></i> {{HoTen}} {{this_user.username}}
+                                </div>
+                            </button>
+                        </a>
                     </li>
 
                     <li class="header__navbar-item" style="margin: 0">
@@ -172,5 +174,8 @@
             var dropdownMenu = document.getElementById("myDropdown");
             dropdownMenu.style.display = (dropdownMenu.style.display === "none") ? "flex" : "none";
         }
+        document.getElementById("help").addEventListener("click", function () {
+            alert("Tính năng đang phát triển")
+        });
     </script>
 </body>

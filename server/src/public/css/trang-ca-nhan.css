@@ -116,7 +116,9 @@
   text-align: center;
   font-size: 7rem;
   color: #e0683c;
-  padding: 10px 0; }
+  padding: 10px 0;
+  margin-top: 0;
+  margin-bottom: 80px; }
 
 .ul {
   display: flex;
@@ -167,3 +169,9 @@
   height: 300px;
   display: block;
   border-radius: 20px; }
+
+.error-message {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+  margin: 30px 5%; }

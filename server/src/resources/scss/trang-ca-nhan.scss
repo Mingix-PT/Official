@@ -146,6 +146,8 @@
     font-size: 7rem;
     color: rgb(224, 104, 60);
     padding: 10px 0;
+    margin-top: 0;
+    margin-bottom: 80px;
 }
 
 .ul {
@@ -205,4 +207,11 @@
     height: 300px;
     display: block;
     border-radius: 20px;
+}
+
+.error-message {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+    margin: 30px 5%;
 }

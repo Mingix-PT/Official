@@ -1,0 +1,43 @@
+<body>
+    <div class="backgr">
+        <div class="logo1">
+            Quản lý lịch trình học dễ dàng cùng
+        </div>
+        <div class="logo2">Gakusei</div>
+        <h2 class="logo3">Đổi mật khẩu của bạn</h2>
+        <div class="loginbox">
+            <div class="error">
+                <div class="error-message">
+                    {{#if error}}
+                    {{error}}
+                    {{/if}}
+                </div>
+            </div>
+            <div class="ten-tai-khoan">
+                Tài khoản: {{this_user.username}}
+            </div>
+            <form action="/doi-mat-khau" method="post">
+                <div class="log_row">
+                    <label for="account" class="log_infor" title="Mật khẩu cũ" style="font-size: 18px;">
+                        Mật khẩu cũ:
+                    </label>
+                    <input type="password" class="log_input" name="oldPW" required>
+                </div>
+                <div class="log_row">
+                    <label for="password" class="log_infor" title="Mật khẩu mới" style="font-size: 18px;">
+                        Mật khẩu mới:
+                    </label>
+                    <input type="password" class="log_input" name="newPW" required>
+                </div>
+                <div class="log_row">
+                    <label for="password" class="log_infor" title="Nhập lại mật khẩu mới" style="font-size: 18px;">
+                        Nhập lại mật khẩu mới:
+                    </label>
+                    <input type="password" class="log_input" name="confirmPW" required>
+                </div>
+                <input type="submit" class="login" value="Đổi mật khẩu">
+            </form>
+
+        </div>
+    </div>
+</body>
