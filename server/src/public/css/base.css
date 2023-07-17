@@ -28,3 +28,138 @@ body {
 .grid__row {
   display: flex;
   flex-wrap: wrap; }
+
+.app {
+  position: relative; }
+
+.header {
+  position: relative !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #8be4ff;
+  box-shadow: 0 2x 0 rgba(0, 0, 0, 0.15); }
+
+.header__navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 100%; }
+
+.header__navbar-left {
+  display: flex;
+  position: relative;
+  flex-wrap: nowrap;
+  flex: 0.7; }
+
+.header__navbar-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+  position: relative;
+  flex-wrap: nowrap; }
+
+.header__navbar-item:hover,
+.header__navbar-help:hover,
+.header__navbar-name:hover,
+.header__navbar-logout:hover {
+  color: #706b6b; }
+
+.header__navbar-item,
+.header__navbar-help,
+.header__navbar-name,
+.header__navbar-logout {
+  display: inline-block;
+  font-size: 1.8rem;
+  color: #333;
+  text-decoration: none !important;
+  font-weight: 300;
+  margin: 3px 10px;
+  position: relative;
+  white-space: nowrap;
+  z-index: 5; }
+
+.separate::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-left: 1px solid #333;
+  height: 40px;
+  right: -15px;
+  top: 0;
+  transform: translateY(-30%); }
+
+.header__navar-menu {
+  position: relative;
+  margin-right: 10px;
+  margin-top: 10px; }
+
+.menu {
+  /* display: flex; */
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: #efefef 0.2px solid;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  display: none; }
+
+.menu-item {
+  flex: 1;
+  border: none !important;
+  padding: 5px 10px;
+  background-color: transparent !important;
+  cursor: pointer; }
+
+.menu-item:hover {
+  color: #fea05d; }
+
+.header__navbar-logo {
+  transform: scale(0.9);
+  position: relative;
+  top: 0;
+  margin-right: 10px;
+  left: 10px;
+  width: 80%;
+  height: 100%;
+  z-index: 10; }
+
+.header__navbar-search {
+  display: flex;
+  flex: 0.8;
+  margin-top: 9px;
+  margin-left: 10px;
+  height: 40px;
+  background-color: #fff;
+  border: 5px solid #fff;
+  border-radius: 10px; }
+
+.header__navbar-input {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  color: black;
+  padding: 0 5px; }
+
+.icon {
+  transform: scale(4);
+  margin-right: 5px;
+  margin-top: 8px; }
+
+.button {
+  position: relative;
+  display: inline-block;
+  border: none;
+  background-color: transparent !important;
+  cursor: pointer;
+  padding: 0; }
+
+.icon:hover {
+  color: #706b6b; }

@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lugrasimo&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -39,29 +41,46 @@
                 </div>
                 <ul class="header__navbar-list">
                     <li class="header__navbar-item">
-                        <button type="button" class="button">
+                        <button type="submit" class="button">
                             <div class="header__navbar-help separate">
                                 <i class="fa-regular fa-circle-question"></i> Trợ giúp
                             </div>
                         </button>
                     </li>
                     <li class="header__navbar-item separate">
-                        <a href="trang-ca-nhan">
-                            <button type="button" class="button">
-                                <div class="header__navbar-name" style="margin: 0;">
-                                    <i class="fa-solid fa-user"></i> Trang cá nhân
-                                </div>
-                            </button>
-                        </a>
+                        <button type="submit" class="button">
+                            <div class="header__navbar-name" style="margin: 0;">
+                                <i class="fa-solid fa-user"></i> {{HoTen}} {{this_user.username}}
+                            </div>
+                        </button>
                     </li>
-                    <li class="header__navbar-item " style="margin: 0">
-                        <form action="/dang-xuat?_method=DELETE" method="POST">
-                            <button type="submit" class="button">
-                                <div class="header__navbar-name" style="margin: 0;">
-                                    <i class="fa-solid fa-user"></i> Đăng xuất
+
+                    <li class="header__navbar-item" style="margin: 0">
+                        <div class="button" onclick="toggleDropdown()">
+                            <div class="header__navbar-logout" style="padding-left: 3px;">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                            <div class="header__navar-menu">
+                                <div class="menu" id="myDropdown">
+                                    <a href="/trang-ca-nhan">
+                                        <button type="submit" class="menu-item" style="margin: 0;"
+                                            href="/trang-ca-nhan">
+                                            <i class="fa-sharp fa-solid fa-user"></i> Trang cá nhân
+                                        </button>
+                                    </a>
+                                    <a href="/doi-mat-khau">
+                                        <button type="submit" class="menu-item" style="margin: 0;">
+                                            <i class="fa-solid fa-lock"></i> Đổi mật khẩu
+                                        </button>
+                                    </a>
+                                    <form action="/dang-xuat?_method=DELETE" method="POST">
+                                        <button type="submit" class="menu-item" style="margin: 0;">
+                                            <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                                        </button>
+                                    </form>
                                 </div>
-                            </button>
-                        </form>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -70,9 +89,9 @@
             <h1 class="container__title">Trang thông tin cá nhân</h1>
 
             <div class="container__user-infor">
-                <ul>
+                <div class="ul">
                     <div class="li">
-                        <div class="container__user-infor-field">
+                        <div class="container__user-infor-field " style="margin-left: 30%;">
                             <img id="avatar" src="/img/{{MSHS}}.jpg" alt="Ảnh đại diện"
                                 class="container__user-infor-field-input avatar">
                         </div>
@@ -83,8 +102,8 @@
                             <div class="container__user-infor-field-input" id="name">{{HoTen}}</div>
                         </div>
                         <div class="container__user-infor-field">
-                            <label for="id" class="container__user-infor-field-name">MSHS:</label>
-                            <div class="container__user-infor-field-input" id="id">{{MSHS}}</div>
+                            <label for="email" class="container__user-infor-field-name">MSHS:</label>
+                            <div class="container__user-infor-field-input" id="email">{{MSHS}}</div>
                         </div>
                         <div class="container__user-infor-field">
                             <label for="place" class="container__user-infor-field-name">Lớp:</label>
@@ -95,21 +114,28 @@
                             <div class="container__user-infor-field-input" id="dob">{{NgaySinh}}</div>
                         </div>
                         <div class="container__user-infor-field">
-                            <label for="email" class="container__user-infor-field-name">Giới tính:</label>
-                            <div class="container__user-infor-field-input" id="email">{{GioiTinh}}</div>
+                            <label for="id" class="container__user-infor-field-name">Giới tính:</label>
+                            <div class="container__user-infor-field-input" id="id">{{GioiTinh}}</div>
                         </div>
                         <div class="container__user-infor-field">
                             <label for="PhoneNumber" class="container__user-infor-field-name">Số điện thoại:</label>
                             <div class="container__user-infor-field-input" id="PhoneNumber">{{SDT}}</div>
                         </div>
                     </div>
-                </ul>
+                </div>
 
 
 
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("myDropdown");
+            dropdownMenu.style.display = (dropdownMenu.style.display === "none") ? "flex" : "none";
+        }
+    </script>
 </body>
 
 </html>

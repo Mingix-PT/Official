@@ -44,6 +44,7 @@ initializePassport(
     username => {
         let found = users.find(user => user.username === username)
         if (found == null) return null
+        this_user.name = found.name
         this_user.username = found.username
         this_user.password = found.password
         return found
@@ -121,23 +122,26 @@ app.get('/dang-nhap', checkNotAuthenticated, (req, res) => {
         if (err) console.log(err)
         else {
             let request = new sql.Request()
-            request.query(`SELECT MSHS, Password FROM DangNhap`, (err, recordset) => {
-                if (err) {
-                    console.log(err);
-                    sql.close();
-                    return;
-                }
-                else {
-                    for (let i = 0; i < recordset.recordset.length; i++) {
-                        users.push({
-                            id: Date.now().toString(),
-                            username: recordset.recordset[i].MSHS,
-                            password: recordset.recordset[i].Password,
-                        })
+            request.query(`SELECT HocSinh.MSHS MSHS, Password, HoTen 
+                            FROM DangNhap JOIN HocSinh ON HocSinh.MSHS = DangNhap.MSHS`,
+                (err, recordset) => {
+                    if (err) {
+                        console.log(err);
+                        sql.close();
+                        return;
                     }
-                    sql.close();
-                }
-            })
+                    else {
+                        for (let i = 0; i < recordset.recordset.length; i++) {
+                            users.push({
+                                id: Date.now().toString(),
+                                name: recordset.recordset[i].HoTen,
+                                username: recordset.recordset[i].MSHS,
+                                password: recordset.recordset[i].Password,
+                            })
+                        }
+                        sql.close();
+                    }
+                })
         }
     })
     res.render('dang-nhap')
@@ -202,6 +206,7 @@ app.get('/tim-kiem', checkAuthenticated, (req, res) => {
                             Email: recordset.recordset[0].Email,
                             ToChuyenMon: recordset.recordset[0].ToChuyenMon,
                             NgaySinh: recordset.recordset[0].DOB,
+                            this_user,
                         })
                         sql.close()
                     }
@@ -271,12 +276,11 @@ app.get('/', checkAuthenticated, (req, res) => {
             sql.close()
         }
         else {
-            let query = `SELECT TenLop, CaHoc, Thu, Phong, TenMon, HoTen
+            let query = `SELECT TKB.TenLop Lop, CaHoc, Thu, Phong, TenMon, GiaoVien.HoTen TenGV, HocSinh.HoTen TenHS
                         FROM TKB JOIN MonHoc ON TKB.MaMon = MonHoc.MaMon 
                         JOIN GiaoVien ON TKB.MSGV = GiaoVien.MSGV
-                        WHERE TenLop = (SELECT TenLop
-                        FROM HocSinh
-                        WHERE MSHS = '${this_user.username}')
+                        JOIN HocSinh ON TKB.TenLop = HocSinh.TenLop
+                        WHERE MSHS = '${this_user.username}'
                         ORDER BY Thu, CaHoc`
             const request = new sql.Request()
             request.query(query, (err, recordset) => {
@@ -289,7 +293,9 @@ app.get('/', checkAuthenticated, (req, res) => {
                     let Ca2 = []
                     let Ca3 = []
                     let Lop = []
-                    Lop.push(recordset.recordset[0].TenLop)
+                    let HoTen = []
+                    Lop.push(recordset.recordset[0].Lop)
+                    HoTen.push(recordset.recordset[0].TenHS)
                     for (let i = 0; i < recordset.recordset.length; i++) {
                         if (recordset.recordset[i].CaHoc === 'Ca 1') {
                             Ca1.push(recordset.recordset[i])
@@ -307,6 +313,8 @@ app.get('/', checkAuthenticated, (req, res) => {
                         Ca1,
                         Ca2,
                         Ca3,
+                        HoTen,
+                        this_user,
                     })
                 }
             })

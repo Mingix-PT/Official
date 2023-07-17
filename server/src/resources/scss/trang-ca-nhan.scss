@@ -57,8 +57,7 @@
     margin: 3px 10px;
     position: relative;
     white-space: nowrap;
-
-
+    z-index: 5
 }
 
 
@@ -80,6 +79,7 @@
     left: 10px;
     width: 80%;
     height: 100%;
+    z-index: 5;
 
 
 
@@ -134,43 +134,47 @@
 
 .container {
     margin-top: 70px;
+    width: 100%;
+    position: absolute;
 
 
 }
 
 .container__title {
-    font-family: 'Lugrasimo';
+    font-family: 'Dancing Script';
     text-align: center;
-    font-size: 4rem;
+    font-size: 7rem;
     color: rgb(224, 104, 60);
     padding: 10px 0;
 }
 
-ul {
+.ul {
     display: flex;
+    width: 100%;
     padding: 0;
     margin: 50px 0;
-    justify-self: space-between;
 }
 
 .li {
     margin: 0;
     margin-top: 50px;
+    flex: 1;
 }
 
 
 .container__user-infor {
-    /* max-width: 400px; */
+    width: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
 }
 
 .container__user-infor-field {
     display: flex;
-    width: 500px;
+    align-items: center;
     height: auto;
     border: none;
     font-size: 1.8rem;
